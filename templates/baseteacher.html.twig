@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block sidebar %}
+    <a href="<?php echo site_url('Students_ctl/show_students'); ?>">
+        <button style="width:90%; margin-top: 10px;">Questions And Answer</button>
+    </a>
+    <a href="<?php echo site_url('Course_ctl/show_courses'); ?>">
+        <button style="width:90%; margin-top: 10px;">Exams</button>
+    </a>
+    <a href="<?php echo site_url('Postalcode_ctl/show_postalcodes'); ?>">
+        <button style="width:90%; margin-top: 10px;">Assign Exams</button>
+    </a>
+    <a href="<?php echo site_url('Login_ctl/logout'); ?>">
+        <button style="width:90%; margin-top: 10px;">Log Out</button>
+    </a>
+{% endblock %}

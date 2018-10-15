@@ -1,0 +1,77 @@
+{# templates/blog/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% endblock %}
+
+{% block MainBody %}
+    <table class="table table-striped table-dark" style="width:90%;">
+    <thead class="thead-light">
+        <tr class="info">
+            <th style="width:45%;">{{ app.user.firstName }}</th>
+            <th style="width:15%;">Category</th>
+            <th style="width:10%;">Difficulty</th>
+            <th style="width:5%;">Edit</th>
+            <th style="width:5%;">Delete</th>
+            <th style="width:20%;">
+                <a href="/questions/new"     >
+                    {# {{ path('todoList') }} #}
+                    <button class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus">Add Question</button>
+                    </a>
+            </th>
+        </tr>
+          </thead>
+        {% for entry in questionstwig %}
+            {% set newans = repans.GetQuestionAnswers(entry.id) %}
+
+            <tr style="font-size:15px; font-weight:bold">
+                <td>{{ entry.qdescription }}</td>
+                <td>{{ entry.qcategoryDsc }}</td>
+                <td>{{ entry.qdifficultylevelDsc }}</td>
+                <td>
+                    <a href="<?php echo site_url('Students_ctl/show_students'); ?>">
+                        <button class="btn btn-primary">
+                            <span class="glyphicon glyphicon-edit"></button>
+                        </a>
+                </td>
+                <td>
+                        <a href="<?php echo site_url('Students_ctl/show_students'); ?>">
+                            <button class="btn btn-primary">
+                                <span class="glyphicon glyphicon-remove"></button>
+                            </a>
+                </td>
+                <td></td>
+            </tr>
+            <tr><td colspan="6" align="center">Answers of {{ entry.qdescription }}</td></tr>
+            {% for ansentry in newans %}
+
+            <tr>
+
+                <td><li>{{ ansentry.ansdescription }}</li></td>
+                {% if ansentry.iscorrect==0 %}
+                    <td style="color:red">{{ ansentry.iscorrectDsc }}</td>
+                {% else %}
+                    <td style="color:Green ; font-weight:bold">{{ ansentry.iscorrectDsc }}</td>
+                {% endif %}
+ <td> </td>
+                <td>
+                    <a href="<?php echo site_url('Students_ctl/show_students'); ?>">
+                        <button class="btn btn-primary">
+                            <span class="glyphicon glyphicon-edit"></button>
+                        </a>
+                </td>
+                <td>
+                    <a href="<?php echo site_url('Students_ctl/show_students'); ?>">
+                        <button class="btn btn-primary">
+                            <span class="glyphicon glyphicon-remove"></button>
+                        </a>
+                </td>
+                <td></td>
+            </tr>
+            {% endfor %}
+            <tr><td colspan="6" align="center" bgcolor="lightGreen"></td></tr>
+        {% endfor %}
+</table>
+{% endblock %}

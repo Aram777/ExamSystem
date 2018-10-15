@@ -1,0 +1,76 @@
+{# templates/base.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}Exam System{% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+                table {
+                    border-collapse:collapse;
+                }
+                tr {
+                    border:none;
+                }
+                th, td {
+                    border-collapse:collapse;
+                    border: 1px solid black;
+                    padding-top:0;
+                    padding-bottom:0;
+                }
+                .verticalSplit {
+                    border-top:none;
+                    border-bottom:none;
+                }
+                .verticalSplit:first-of-type {
+                    border-left:none;
+                }
+                .verticalSplit:last-of-type {
+                    border-right:none;
+                }
+
+            .left_ {
+                float: left;
+                width: 15%;
+            }
+            .right_ {
+                float: right;
+                width: 85%;
+            }
+            .Top_ {
+                column-count: 2;
+                column-gap: 20px;
+                height: 30%;
+                display: inline-block;
+                vertical-align: top;
+                background:lightgray;
+                width: 85%;
+
+            }
+            .Bottom_ {
+                float: Bottom;
+                height: 70%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="sidebar" class="left_">
+            {% block sidebar %}
+
+            {% endblock %}
+        </div>
+        <div class="right_">
+            <div class="Top_" >
+                <h3 style="align:center;">Examination System </h13>
+            </div>
+            <div class="Bottom_">
+
+                <div id="content">
+                    {% block MainBody %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
